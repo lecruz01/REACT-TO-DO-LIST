@@ -1,0 +1,7 @@
+.menu {
+  transform: translate3d(100%, 0, 0);
+  transition: 0.5s transform ease-in-out;
+  &.opened {
+    transform: translate3d(0, 0, 0);
+  }
+}

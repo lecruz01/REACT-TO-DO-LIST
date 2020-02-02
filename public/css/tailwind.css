@@ -10455,7 +10455,7 @@ video {
   width: 2.5rem;
 }
 
-.w-12 {
+.w-8 {
   width: 3rem;
 }
 
@@ -20478,7 +20478,7 @@ body {
     width: 2.5rem;
   }
 
-  .sm\:w-12 {
+  .sm\:w-8 {
     width: 3rem;
   }
 
@@ -30496,7 +30496,7 @@ body {
     width: 2.5rem;
   }
 
-  .md\:w-12 {
+  .md\:w-8 {
     width: 3rem;
   }
 
@@ -40514,7 +40514,7 @@ body {
     width: 2.5rem;
   }
 
-  .lg\:w-12 {
+  .lg\:w-8 {
     width: 3rem;
   }
 
@@ -50532,7 +50532,7 @@ body {
     width: 2.5rem;
   }
 
-  .xl\:w-12 {
+  .xl\:w-8 {
     width: 3rem;
   }
 
