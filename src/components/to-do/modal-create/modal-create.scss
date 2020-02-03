@@ -1,0 +1,29 @@
+.modal-create {
+  transition: 500ms transform ease-in-out;
+  transform: translate3d(100%, 0, 0);
+  &.opened {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .modal-create {
+    top: 100%;
+    left: 50%;
+    transform: translate3d(-50%, 0, 0);
+    transition: 700ms all ease-in-out;
+    &.opened {
+      top: 50%;
+      transform: translate3d(-50%, -50%, 0);
+    }
+  }
+
+  .modal-backdrop {
+    top: 100%;
+    transition: 500ms opacity ease-in-out;
+    &.opened {
+      top: 0;
+      opacity: 0.5;
+    }
+  }
+}

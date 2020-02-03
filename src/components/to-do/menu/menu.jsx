@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
 import {
-  faEllipsisV,
+  faBars,
+  faTimes,
   faCheckCircle,
   faExclamationCircle,
   faFileAlt
@@ -37,7 +38,7 @@ class TodoMenu extends Component {
             className="px-4"
             onClick={this.openMenu.bind(this)}
           >
-            <FontAwesomeIcon icon={faEllipsisV} size="2x" />
+            <FontAwesomeIcon icon={opened ? faTimes : faBars} size="2x" />
           </div>
           <div
             ref="burguer-menu"

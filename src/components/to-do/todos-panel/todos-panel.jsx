@@ -1,57 +1,60 @@
-import React, { Component } from "react";
+import React from "react";
+import { useQuery } from "@apollo/react-hooks";
+import { gql } from "apollo-boost";
 import TodoItem from "../todo-item/todo-item";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faExclamationTriangle,
+  faSpinner
+} from "@fortawesome/free-solid-svg-icons";
 
-class TodosPanel extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      items: [
-        {
-          id: "28012020-1",
-          title: "Tarea Numero 1",
-          expireDate: "12/02/2020",
-          priority: 2
-        },
-        {
-          id: "28012020-2",
-          title: "Tarea Numero 2",
-          expireDate: "05/02/2020",
-          priority: 1
-        },
-        {
-          id: "28012020-3",
-          title: "Tarea Numero 3",
-          expireDate: "15/04/2020",
-          priority: 4
-        }
-      ]
-    };
+const TODOS_QUERY = gql`
+  {
+    getTodos {
+      id
+      title
+      description
+      expirationDate
+      priority
+    }
   }
+`;
 
-  componentDidMount() {
-    fetch("http://localhost:3001/todo/all")
-      .then(res => res.json())
-      .then(data => {
-        this.setState({ items: data.data });
-      })
-      .catch(console.log);
-  }
+const TodosPanel = () => {
+  // const fetchData = async () => {
+  //   await fetch('http://localhost:4000/todos/list')
+  //   .then(res => {
 
-  render() {
-    const { items } = this.state;
-    console.log("Items", items);
+  //   });
+  // }
+  const { loading, error, data } = useQuery(TODOS_QUERY);
+
+  if (loading)
     return (
-      <div className="w-full">
-        {items.map((item, key) => {
-          let odd = false;
-          if (key % 2 === 0) odd = true;
-          return (
-            <TodoItem key={"todo-" + key} item={item} odd={odd}></TodoItem>
-          );
-        })}
-      </div>
+      <p className="w-full text-center text-2xl">
+        Cargando tareas
+        <br />
+        <FontAwesomeIcon icon={faSpinner} spin size="2x" />
+      </p>
     );
-  }
-}
+  if (error)
+    return (
+      <p className="w-full text-center text-2xl">
+        Ocurrio un error al cargar los datos
+        <br />
+        <FontAwesomeIcon icon={faExclamationTriangle} size="2x" />
+      </p>
+    );
+
+  return (
+    <div className="w-full mb-8">
+      {data.getTodos.map((item, key) => {
+        let odd = false;
+        if (key % 2 === 0) odd = true;
+        return <TodoItem key={"todo-" + key} item={item} odd={odd}></TodoItem>;
+      })}
+    </div>
+  );
+};
 
 export default TodosPanel;
