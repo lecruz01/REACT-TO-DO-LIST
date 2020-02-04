@@ -1,22 +1,17 @@
-import React from "react";
-import ApolloClient from "apollo-boost";
-import { ApolloProvider } from "@apollo/react-hooks";
+import React, { useState } from "react";
 import NavBar from "./components/general/navbar/navbar";
 import Main from "./components/general/main/main";
-
-const client = new ApolloClient({
-  uri: "http://localhost:4000/graphql"
-});
+import { isMobile, isBrowser } from "react-device-detect";
 
 function ToDoApp() {
+  const [category, handleCategoryChange] = useState("pendientes");
+
   return (
-    <ApolloProvider client={client}>
-      <div className="ToDoApp">
-        <NavBar></NavBar>
-        <Main></Main>
-        {/* <Footer></Footer> */}
-      </div>
-    </ApolloProvider>
+    <div className="ToDoApp">
+      <NavBar changeCategory={handleCategoryChange}></NavBar>
+      {isMobile && <Main key={category} mobileCategory={category}></Main>}
+      {isBrowser && <Main></Main>}
+    </div>
   );
 }
 

@@ -26,6 +26,7 @@ class TodoMenu extends Component {
 
   render() {
     const { opened } = this.state;
+    const { changeCategory } = this.props;
     const categoryStyles =
       "todo-category flex justify-between items-center px-4 py-2 bg-white cursor-pointer hover:bg-gray-300";
     if (isMobile) {
@@ -44,21 +45,36 @@ class TodoMenu extends Component {
             ref="burguer-menu"
             className={opened ? "opened " + mobileClasses : mobileClasses}
           >
-            <div className={categoryStyles}>
+            <div
+              className={categoryStyles}
+              onClick={() => {
+                changeCategory("finalizadas");
+              }}
+            >
               Tareas Finalizadas
               <FontAwesomeIcon
                 icon={faCheckCircle}
                 className="text-green-600 ml-2"
               />
             </div>
-            <div className={categoryStyles}>
-              Finaliza pronto
+            <div
+              className={categoryStyles}
+              onClick={() => {
+                changeCategory("urgentes");
+              }}
+            >
+              Urgentes
               <FontAwesomeIcon
                 icon={faExclamationCircle}
                 className="text-red-500 ml-2"
               />
             </div>
-            <div className={categoryStyles}>
+            <div
+              className={categoryStyles}
+              onClick={() => {
+                changeCategory("pendientes");
+              }}
+            >
               Tareas pendientes
               <FontAwesomeIcon
                 icon={faFileAlt}
@@ -69,6 +85,9 @@ class TodoMenu extends Component {
               className={
                 categoryStyles + " bg-red-600 text-white hover:bg-red-700"
               }
+              onClick={() => {
+                changeCategory("papelera");
+              }}
             >
               Papelera
               <FontAwesomeIcon icon={faTrashAlt} className="ml-2" />
@@ -83,31 +102,46 @@ class TodoMenu extends Component {
           Categorias
         </p>
         <div className="categories">
-          <div className={categoryStyles}>
+          <div
+            className={categoryStyles}
+            onClick={() => {
+              changeCategory("finalizadas");
+            }}
+          >
             Tareas Finalizadas
-            <FontAwesomeIcon
-              icon={faCheckCircle}
-              className="text-green-600 mr-2"
-            />
+            <FontAwesomeIcon icon={faCheckCircle} className="text-green-600" />
           </div>
-          <div className={categoryStyles}>
+          <div
+            className={categoryStyles}
+            onClick={() => {
+              changeCategory("urgentes");
+            }}
+          >
             Finaliza pronto
             <FontAwesomeIcon
               icon={faExclamationCircle}
-              className="text-red-500 mr-2"
+              className="text-red-500"
             />
           </div>
-          <div className={categoryStyles}>
+          <div
+            className={categoryStyles}
+            onClick={() => {
+              changeCategory("pendientes");
+            }}
+          >
             Tareas pendientes
-            <FontAwesomeIcon icon={faFileAlt} className="text-blue-500 mr-2" />
+            <FontAwesomeIcon icon={faFileAlt} className="text-blue-500" />
           </div>
           <div
             className={
               categoryStyles + " bg-red-600 text-white hover:bg-red-700"
             }
+            onClick={() => {
+              changeCategory("papelera");
+            }}
           >
-            <FontAwesomeIcon icon={faTrashAlt} className="mr-2" />
             Papelera
+            <FontAwesomeIcon icon={faTrashAlt} />
           </div>
         </div>
       </div>
