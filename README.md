@@ -1,68 +1,51 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# REACT-TODO-APP
 
-## Available Scripts
+![React TailwindCSS](/readme-assets/logos.jpeg "React TailwindCSS")
 
-In the project directory, you can run:
+Este repositorio implementa el frontend de la aplicacion ToDo elaborada con React. Se utilizo la libreria de utilidades TailwindCSS para el diseño de las interfaces.
 
-### `npm start`
+## Inicializar el proyecto
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Para instalar las dependecias del proyecto ejecutaremos en la terminal el siguiente comando. Se requiere utilizar la versión LTS de NodeJS (*12.14.1*) o superior, y la versión *6.13.4* o superior de NPM.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+```bash
+npm install
+```
 
-### `npm test`
+### Iniciar servidor de desarrollo
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Antes de iniciar el proyecto debemos crear en la carpeta raíz un archivo `.env` en el que incluiremos la siguiente variable:
 
-### `npm run build`
+```bash
+REACT_APP_APOLLO_URL=http://localhost:4000/graphql
+```
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Esto servira para indicar a React la ubicacion en la red de nuestro servidor backend y poder realizar las solicitudes de datos correctamente.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Para iniciar el proyecto en un servidor local con hot-reload ejecutaremos el siguiente comando en la terminal.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+npm run start
+```
 
-### `npm run eject`
+### Crear compilado del proyecto para despliegue
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Si deseamos crear un compilado productivo de la aplicación usaremos el siguiente comando en la terminal.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm run build
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Iniciar servidor productivo local
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Una vez hayamos creado la versión compilada y optimizada del proyecto, podemos ejecutarla en un servidor local utilizando el modulo Serve, el cúal podemos instalar con el siguiente comando.
 
-## Learn More
+```bash
+npm install serve -g
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+E iniciar el servidor con el comando.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+```bash
+serve -s build
+```
